@@ -1,0 +1,17 @@
+{
+  "name": "npm-module",
+  "version": "1.0.0",
+  "main": "intro npm module.js",
+  "scripts": {
+    "dev": "nodemon npm-module.js"
+  },
+  "author": "Abdelmagid",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "simple-otp-project-12": "^1.0.1"
+  }
+}
