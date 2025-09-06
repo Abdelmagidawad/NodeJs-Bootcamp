@@ -85,6 +85,18 @@ fs.readdir("./", (err, files) => {
 //   console.log("Deleted Successfully");
 // });
 
+//** Check File Exist **
+// => existsSync(path) => to check file exist or not
+
+if (fs.existsSync("./user.json")) {
+  fs.readFile("./user.json", "utf8", (err, content) => {
+    if (err) console.log("Error", err);
+    console.log("File Content =>", content);
+  });
+} else {
+  console.log("No File user Exist");
+}
+
 // ** Charset-Encoding-Buffers **
 
 // => Charset-Encoding(utf8)
