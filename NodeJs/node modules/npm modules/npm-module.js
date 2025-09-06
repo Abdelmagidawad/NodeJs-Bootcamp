@@ -37,3 +37,130 @@ import { generateOTP } from "simple-otp-project-12";
 console.log(generateOTP());
 console.log(generateOTP(5));
 console.log(generateOTP(10, { chars: true }));
+
+//**Create and Publish CIL Tool
+
+// => process refer to current process to this current app
+// => argv refer to command-line arguments passed user
+
+// console.log(process.argv);
+// returns an array containing the command-line arguments passed when the Node.js process
+
+// if (process.argv[2] === "add") {
+//   console.log("you are going to add course with name", process.argv[3]);
+// }
+
+// commander.js Package => is used to create command-line interfaces easily and efficiently.
+
+import { Command } from "commander";
+const program = new Command();
+
+// program
+//   .name("cli-courses-manager")
+//   .description("cli to make courses")
+//   .version("1.0.0");
+
+// program
+//   .command("add")
+//   .alias("a")
+//   .description("Add a new course")
+//   .argument("<title>", "add course title")
+//   .option("--price <price>", "add course price")
+//   .action((title, option) => {
+//     console.log("Param=>", title, "Option=>", option);
+//   });
+
+// program
+//   .command("list")
+//   .alias("l")
+//   .description("List all courses")
+//   .action(() => {
+//     console.log("All Courses");
+//   });
+
+// program.parse(process.argv);
+
+// *** ###
+
+// inquirer.js Package => is  a collection of common interactive command line user interfaces.
+
+// syntax=>
+// inquirer
+// .prompt([
+//     /* Pass your questions in here */
+// ])
+// .then((answers)=>{
+//      // Use user feedback for... whatever!!
+// })
+// .catch((err)=>{})
+
+import inquirer from "inquirer";
+
+// inquirer
+//   .prompt([
+//     {
+//       type: "input",
+//       name: "programming",
+//       message: "what is your favorite programming language",
+//     },
+//   ])
+//   .then((answers) => {
+//     console.log(answers);
+//   })
+//   .catch((err) => {
+//     console.log("Error", err);
+//   });
+
+//=> When use command add to ask a title course and price
+
+const questions = [
+  {
+    type: "input",
+    name: "title",
+    message: "Please Enter Course Title",
+  },
+  {
+    type: "number",
+    name: "price",
+    message: "Please Enter Course Price",
+  },
+];
+
+program
+  .name("cli-courses-manager")
+  .description("cli to make courses")
+  .version("1.0.0");
+//
+import fs from "fs";
+//
+program
+  .command("add")
+  .alias("a")
+  .description("Add a new course")
+  .action(() => {
+    inquirer.prompt(questions).then((answers) => {
+      // console.log(answers);
+      //
+      if (fs.existsSync("./courses.json")) {
+        fs.readFile("./courses.json", "utf8", (err, fileContent) => {
+          if (err) {
+            console.log("Error", err);
+            process.exit();
+          }
+          const content = JSON.parse(fileContent);
+          content.push(answers);
+          fs.writeFile("./courses.json", JSON.stringify(content), (err) => {
+            if (err) console.log(err);
+            console.log("Add Course Done");
+          });
+        });
+      } else {
+        fs.writeFile("./courses.json", JSON.stringify([answers]), () => {
+          console.log("Add Course Done");
+        });
+      }
+      //
+    });
+  });
+
+program.parse(process.argv);

@@ -1,0 +1,5 @@
+[
+  { "title": "javaScript", "price": 500 },
+  { "title": "Css", "price": 150 },
+  { "title": "Node Js", "price": 1000 }
+]
