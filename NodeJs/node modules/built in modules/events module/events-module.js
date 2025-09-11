@@ -31,3 +31,18 @@ emitter.on("logging", (arg) => {
 });
 // Raise an event
 emitter.emit("logging", "Login Successfully");
+
+// *** Extending EventEmitter  ***
+
+// //const EventEmitter = require("events"); //Don`t use this class,but use class Logger to extends from EventEmitter class
+
+const Logger = require("./logger");
+const logger = new Logger();
+
+//Register a Listener
+logger.on("messageLogged", (arg) => {
+  console.log("Listener Called!", arg);
+  console.log("Listener Called!", arg.id);
+});
+
+logger.log("Test Message!");
