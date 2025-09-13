@@ -1,0 +1,3 @@
+ libuv => is a cross platform open source library written in C language with a focus on Asynchronous I/O.
+ why use libuv? => to handles asynchronous / non-blocking operations in NodeJs.
+ how? => using :thread pool & event loop.

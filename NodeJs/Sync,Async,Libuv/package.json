@@ -1,0 +1,15 @@
+{
+  "name": "libuv",
+  "version": "1.0.0",
+  "description": "flow how libuv to handel Sync,Async Code on NodeJs",
+  "main": "libuv.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "keywords": [
+    "libuv"
+  ],
+  "author": "Abdelmagid",
+  "license": "MIT"
+}
