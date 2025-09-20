@@ -1,0 +1,12 @@
+{
+  "name": "rest-api-products",
+  "version": "1.0.0",
+  "description": "Build a small **REST API** for `/products` using **Node.js `http` module** (without Express).",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "Abdelmagid",
+  "license": "ISC"
+}
